@@ -1,14 +1,38 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import { data } from './components/data';
-import List from './components/List';
+import Loading from './components/Loading';
+import Tours from './components/Tours';
+import axios from 'axios';
+const url = 'https://course-api.com/react-tours-project'
+
 function App() {
- const [people,setPeople] = useState(data);
+const [loading,setLoading] = useState(true);
+const [tours,setTours] = useState([]);
+const fetchTours = async()=>{
+  setLoading(true);
+  try {
+    const tours = await axios(url);
+
+    setLoading(false);
+    setTours(tours);
+    
+  } catch (error) {
+    console.log()
+  }
+}
+useEffect(()=>{
+  fetchTours()
+},[])
+if(loading){
+  return (
+    <Loading></Loading>
+  )
+}
 
   return (
-  <><List people={people}/>
-  <button type='button' onClick={()=>{setPeople([])}}>Click Me</button>
+  <>
+<Tours tours={tours}></Tours>
   </>
   
   );
