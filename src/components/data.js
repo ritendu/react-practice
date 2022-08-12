@@ -1,0 +1,4 @@
+export const data = [
+    {id:1,name:'First name'},
+    {id:2,name:'Second name'}
+]
