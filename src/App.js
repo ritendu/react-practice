@@ -8,11 +8,27 @@ function App() {
 const [menuItems,setMenuItems]=useState(items);
 // const [category,]
 const filterItems =(category)=>{
+  if(category === 'all'){
+    setMenuItems(items);
+    return;
+    
+  }
   const newItems = menuItems.filter(menuItem =>{
+
     return menuItem.category === category
   })
   setMenuItems(newItems);
 }
+
+// const filterItems = (category) => {
+//   if (category === 'all') {
+//     setMenuItems(items);
+//     return;
+//   }
+//   const newItems = items.filter((item) => item.category === category);
+//   setMenuItems(newItems);
+// };
+
 return (
   <>
   <main>
