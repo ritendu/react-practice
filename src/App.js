@@ -1,17 +1,30 @@
 
 import { useState } from 'react';
 import './App.css';
-import data from './components/data';
-import Questions from './components/Questions'
+import items from './components/data'
+import Menu from './components/Menu';
+import Categories from './components/Categories'
 function App() {
-  const [questions,setQuestions] = useState(data);
+const [menuItems,setMenuItems]=useState(items);
+// const [category,]
+const filterItems =(category)=>{
+  const newItems = menuItems.filter(menuItem =>{
+    return menuItem.category === category
+  })
+  setMenuItems(newItems);
+}
 return (
   <>
-  {questions.map(question=>{
-    return(
-      <Questions key={question.id} {...question}/>
-    )
-  })}
+  <main>
+      <section className="menu section">
+        <div className="title">
+          <h2>our menu</h2>
+          <div className="underline"></div>
+        </div>
+        <Categories filterItems={filterItems} />
+        <Menu items={menuItems} />
+      </section>
+    </main>
   </>
 )
 }
