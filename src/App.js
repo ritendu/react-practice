@@ -4,30 +4,19 @@ import './App.css';
 import items from './components/data'
 import Menu from './components/Menu';
 import Categories from './components/Categories'
+const allCategories = ['all',...new Set(items.map(item=>item.category))];
 function App() {
 const [menuItems,setMenuItems]=useState(items);
-// const [category,]
-const filterItems =(category)=>{
-  if(category === 'all'){
+
+const filterItems = (category) => {
+  if (category === 'all') {
     setMenuItems(items);
     return;
-    
   }
-  const newItems = menuItems.filter(menuItem =>{
-
-    return menuItem.category === category
-  })
+  const newItems = items.filter((item) => item.category === category);
   setMenuItems(newItems);
-}
+};
 
-// const filterItems = (category) => {
-//   if (category === 'all') {
-//     setMenuItems(items);
-//     return;
-//   }
-//   const newItems = items.filter((item) => item.category === category);
-//   setMenuItems(newItems);
-// };
 
 return (
   <>
@@ -37,7 +26,7 @@ return (
           <h2>our menu</h2>
           <div className="underline"></div>
         </div>
-        <Categories filterItems={filterItems} />
+        <Categories categories={allCategories} filterItems={filterItems} />
         <Menu items={menuItems} />
       </section>
     </main>
