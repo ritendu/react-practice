@@ -8,12 +8,13 @@ import PageNotFound from './components/PageNotFound';
 import Products from './components/Products';
 import SharedLayout from './components/SharedLayout';
 
+
 function App() {
 
   return (
  <BrowserRouter>
  <Routes>
-  <Route path='/' element={<div><SharedLayout></SharedLayout></div>}>
+  <Route path='/' element={<div><SharedLayout/></div>}>
     <Route index element={<Home></Home>}></Route>
   <Route path='/about' element={<div><About/></div>}/>
   <Route path='/products' element={<div><Products></Products></div>}/>
