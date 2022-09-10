@@ -1,9 +1,9 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-export const Home = () => {
-  return (
-    <div>Home
-<Link to='/about'>About</Link>
+import { Link } from "react-router-dom"
+const Home = ()=>{
+    return <div>
+<Link to="about">About</Link>
+        <h2>Home</h2>
     </div>
-  )
 }
+
+export default Home
