@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom"
+
 const Home = ()=>{
     return <div>
-<Link to="about">About</Link>
-        <h2>Home</h2>
+
+   <h2>Home</h2>
+       
+      
     </div>
 }
 
