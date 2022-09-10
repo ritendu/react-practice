@@ -1,7 +1,16 @@
+import { Link } from "react-router-dom"
+import products from "./data"
 const Products = ()=>{
     return (
         <div>
-            <h2>Products</h2>
+           {products.map(product=>{
+            return (
+                <div key={product.id}>
+<h5>{product.name}</h5>
+<Link to={`/products/${product.id}`}>more info</Link>
+                </div>
+            )
+           })}
         </div>
     )
 }
