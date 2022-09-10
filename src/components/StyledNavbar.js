@@ -3,11 +3,9 @@ import { NavLink } from 'react-router-dom';
 const StyledNavbar = ()=>{
     return (
         <nav className='navbar'>
-        <NavLink
+         <NavLink
     to='/'
-    style={({ isActive }) => {
-      return { color: isActive ? 'red' : 'grey' };
-    }}
+    className={({ isActive }) => (isActive ? 'link active' : 'link')}
   >
     Home
   </NavLink>
