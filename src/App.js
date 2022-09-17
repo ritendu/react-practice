@@ -1,14 +1,14 @@
 
 
 import './App.css';
-import ShortCircuitEvaluation from './components/ShortCircuitEvaluation';
 
+import Registration from './components/Registration';
 
 function App() {
 
   return (
  <>
-<ShortCircuitEvaluation></ShortCircuitEvaluation>
+<Registration></Registration>
  </>
   
   );
