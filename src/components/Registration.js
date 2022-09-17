@@ -14,6 +14,7 @@ const Registration = ()=>{
         validationSchema:signupSchema,
        onSubmit:(values,action)=>{
         console.log(values,"values")
+        action.resetForm();
        }
     })
 console.log(errors,"errors")
