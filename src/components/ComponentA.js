@@ -1,12 +1,14 @@
-import {MyContext}  from '../App'
+// import {MyContext}  from '../App'
+import ComponentB from "./ComponentB"
 const ComponentA = ()=>{
     return (
         <div>
-            <MyContext.Consumer>
+            {/* <MyContext.Consumer>
                 {(value)=>{
                     return value
                 }}
-            </MyContext.Consumer>
+            </MyContext.Consumer> */}
+            <ComponentB></ComponentB>
         </div>
     )
 }
