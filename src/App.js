@@ -1,16 +1,14 @@
 
 import './App.css';
-import Login from './components/Login'
-import Profile from './components/Profile'
-function App() {
 
+
+function App() {
+  
   return (
 <div className='middle'>
- <Profile></Profile>
- <Login></Login>
+<h1>Hello World..</h1>
 </div>
-  
-  );
+  )
 }
 
 export default App;
