@@ -1,14 +1,14 @@
 
-import File from './components/File';
 import './App.css';
-
-
+import Login from './components/Login'
+import Profile from './components/Profile'
 function App() {
 
   return (
-  <>
-<File></File>
-  </>
+<div className='middle'>
+ <Profile></Profile>
+ <Login></Login>
+</div>
   
   );
 }
