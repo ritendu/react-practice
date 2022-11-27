@@ -1,6 +1,7 @@
-const Alert = ()=>{
+const Alert = ({type,msg})=>{
+    console.log(type,"[[[[[[[[[[")
     return (
-        <h2>Alert</h2>
+     <p className={`alert alert-${type}`}>{msg}</p>
     )
 }
 
