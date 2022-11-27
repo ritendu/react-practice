@@ -1,39 +1,38 @@
-
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import Loading from './components/Loading';
-import Jobs from './components/Jobs';
-const url = 'https://course-api.com/react-tabs-project'
-
+import data from './components/data'
 
 function App() {
-  const [loading,setLoading]= useState(true);
-  const [jobs,setJobs] = useState([])
-const fetchJobs = async()=>{
-  setLoading(true)
-  try {
-    const newJobs = await axios.get(url);  
-    setJobs(newJobs.data);
-    setLoading(false)
-  } catch (error) {
-    setLoading(true)
+  const [count,setCount] = useState(0);
+  const [text,setText] = useState([]);
+const handleSubmit = (e)=>{
+e.preventDefault();
+let amount = parseInt(count);
+if(count<=0){
+  amount=1
+}
+if(count>8){
+  amount=8
+}
+setText(data.splice(0,amount))
+}
+  return (
+<section className='section-center'>
+<h3>tired of boring lorem ipsum</h3>
+<form className='lorem-form' onSubmit={handleSubmit}>
+<label htmlFor='amount'>paragraphs:</label>
+<input type="number" name='amount' value={count} onChange={(e)=>{setCount(e.target.value)}}/>
+<button type='submit' className='btn'>generate</button>
+</form>
+<article className='lorem-text'>
+{text.map((item,index)=>{
+  return <p key={index}>{item}</p>
+})}
+</article>
+</section>
+)
+
   }
 
-}
-useEffect(()=>{
-fetchJobs()
-},[])
-if(loading){
-  return (
-    <Loading></Loading>
-  )
-}
-return (
-  <>
-<Jobs jobs={jobs}></Jobs>  
-  </>
-)
-}
 
 export default App;
