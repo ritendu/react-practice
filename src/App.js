@@ -1,37 +1,36 @@
 import { useState } from 'react';
 import './App.css';
-import data from './components/data'
-
+import List from './components/List';
+import Alert from './components/Alert';
 function App() {
-  const [count,setCount] = useState(0);
-  const [text,setText] = useState([]);
+const [name,setName] = useState('');
+const [list,setList] = useState([]);
+const [isEditing,setIsEditing] = useState(false);
+const [editID,setEditID] = useState(null);
+const [alert,setAlert] = useState({show:false,msg:'',type:''});
+
 const handleSubmit = (e)=>{
 e.preventDefault();
-let amount = parseInt(count);
-if(count<=0){
-  amount=1
-}
-if(count>8){
-  amount=8
-}
-setText(data.splice(0,amount))
+console.log('Hello World');
 }
   return (
-<section className='section-center'>
-<h3>tired of boring lorem ipsum</h3>
-<form className='lorem-form' onSubmit={handleSubmit}>
-<label htmlFor='amount'>paragraphs:</label>
-<input type="number" name='amount' value={count} onChange={(e)=>{setCount(e.target.value)}}/>
-<button type='submit' className='btn'>generate</button>
-</form>
-<article className='lorem-text'>
-{text.map((item,index)=>{
-  return <p key={index}>{item}</p>
-})}
-</article>
-</section>
-)
-
+  <section className='section-center'>
+    <form className='grocery-form' onSubmit={handleSubmit}>
+      {alert.show && <Alert></Alert>}
+      <h3>grocery bud</h3>
+      <div className='form-control'>
+<input type="text" className='grocery' placeholder='eg. eggs' value={name} onChange={(e)=>{setName(e.target.value)}}/>
+<button type="submit" className='submit-btn'>
+  {isEditing?'edit':'submit'}
+</button>
+      </div>
+    </form>
+    <div className='grocery-container'>
+<List></List>
+<button className='clear-btn'>clear items</button>
+    </div>
+  </section>
+ )
   }
 
 
