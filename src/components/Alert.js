@@ -1,8 +1,13 @@
-const Alert = ({type,msg})=>{
-    console.log(type,"[[[[[[[[[[")
-    return (
-     <p className={`alert alert-${type}`}>{msg}</p>
-    )
-}
+import { useEffect } from "react";
 
-export default Alert
+const Alert = ({ type, msg, removeAlert }) => {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      removeAlert();
+    }, 3000)
+    return ()=> clearTimeout(timeout)
+  }, []);
+  return <p className={`alert alert-${type}`}>{msg}</p>;
+};
+
+export default Alert;
