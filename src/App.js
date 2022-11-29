@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import List from "./components/List";
 import Alert from "./components/Alert";
+const getLocalStorage = () => {
+  let list = localStorage.getItem('list');
+  if (list) {
+    return (list = JSON.parse(localStorage.getItem('list')));
+  } else {
+    return [];
+  }
+};
 function App() {
   const [name, setName] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
@@ -15,6 +23,16 @@ function App() {
     if (!name) {
 showAlert(true,'danger','Please Enter Your Name')
     } else if (name && isEditing) {
+      setList(list.map((item)=>{
+        if(item.id===editID){
+          return {...item,title:name}
+        }
+        return item
+      }))
+      setName('');
+      setEditID(null);
+      setIsEditing(false);
+      showAlert(true,'success','value changed')
     } else {
       showAlert(true,'success','item added to the list')
       const newItem = { id: new Date().getTime().toString(), title: name };
@@ -35,6 +53,16 @@ const removeItem = (id)=>{
 showAlert(true,'danger','item removed');
 setList(newList)
 }
+
+const editItem = (id)=>{
+const specificItem = list.find((item)=>item.id===id);
+setIsEditing(true);
+setEditID(id);
+setName(specificItem.title)
+}
+useEffect(() => {
+  localStorage.setItem('list', JSON.stringify(list));
+}, [list]);
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
@@ -58,7 +86,7 @@ setList(newList)
       </form>
       {list.length>0 && (
       <div className="grocery-container">
-      <List items={list} removeItem={removeItem}></List>
+      <List items={list} removeItem={removeItem} editItem={editItem}></List>
       <button className="clear-btn" onClick={clearList}>clear items</button>
     </div>
       )}
