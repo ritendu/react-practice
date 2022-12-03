@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Home from "./components/Home";
+import Modal from "./components/Modal";
 import Sidebar from "./components/Sidebar";
-
-import Navbar from "./components/Navbar";
 
 function App() {
 return (
-  <>
-  <Navbar></Navbar>
-  {/* <Sidebar></Sidebar> */}
-  </>
+<>
+<Home></Home>
+<Modal></Modal>
+<Sidebar></Sidebar>
+</>
 )
 }
 
