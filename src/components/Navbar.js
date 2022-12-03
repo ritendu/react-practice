@@ -9,7 +9,7 @@ return <nav>
             <FaBars />
           </button>
     </div>
-    <div className='links-container show-container'></div>
+    <div className='links-container show-container'>
     <ul className='links'>
         <li>
             <a href="#">home</a>
@@ -18,12 +18,14 @@ return <nav>
             <a href="#">about</a>
         </li>
         <li>
-            <a href="#">contact</a>
+            <a href="#">projects</a>
         </li>
         <li>
             <a href="#">products</a>
         </li>
     </ul>
+    </div>
+   
    <ul className='social-icons'>
     <li>
         <a href='https://twitter.com'>
