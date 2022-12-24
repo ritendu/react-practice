@@ -1,16 +1,13 @@
 
 import './App.css';
 import ComponentA from './components/ComponentA';
-import {createContext} from 'react';
-const MyContext = createContext();
+// import ComponentA from './components/ComponentA';
 
 function App() {
 
   return (
  <>
- <MyContext.Provider value={"Hello"}>
- <ComponentA></ComponentA>
- </MyContext.Provider>
+<ComponentA></ComponentA>
 
  </>
   
@@ -18,4 +15,3 @@ function App() {
 }
 
 export default App;
-export {MyContext}

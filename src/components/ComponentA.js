@@ -1,13 +1,14 @@
-import {MyContext}  from '../App'
+import { useState,useContext } from 'react';
+import {AppContext} from '../context/userContext'
 const ComponentA = ()=>{
+const {name,setname} = useContext(AppContext)
     return (
-        <div>
-            <MyContext.Consumer>
-                {(value)=>{
-                    return value
-                }}
-            </MyContext.Consumer>
-        </div>
+      <div>
+         {name}
+<h1>Component A</h1>
+<button onClick={()=>{setname('Hello')}}>set name</button>
+      </div>
+
     )
 }
 
