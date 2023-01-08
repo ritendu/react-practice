@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Home from "./components/Home";
-import Modal from "./components/Modal";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Submenu from "./components/Submenu";
+
 
 function App() {
 return (
 <>
-<Home></Home>
-<Modal></Modal>
-<Sidebar></Sidebar>
+<Navbar/>
+<Sidebar/>
+<Hero/>
+<Submenu/>
 </>
 )
 }
