@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({children})=>{
-    const [isSidebarOpen,setIsSidebarOpen] = useState(false);
+    const [isSidebarOpen,setIsSidebarOpen] = useState(true);
     const [isSubmenuOpen,setIsSubmenuOpen] = useState(false);
 
     const openSidebar = ()=>{

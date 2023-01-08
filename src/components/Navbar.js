@@ -3,14 +3,14 @@ import { AppContext } from "../context/context";
 import {FaBars} from 'react-icons/fa'
 import logo  from '../images/logo.svg'
 const Navbar = ()=>{
-
+const {openSidebar} = useContext(AppContext);
 
     return (
         <nav className='nav'>
           <div className='nav-center'>
             <div className='nav-header'>
               <img src={logo} className='nav-logo' alt='' />
-              <button className='btn toggle-btn'>
+              <button className='btn toggle-btn' onClick={openSidebar}>
                 <FaBars />
               </button>
             </div>
