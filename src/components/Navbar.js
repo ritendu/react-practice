@@ -3,8 +3,11 @@ import { AppContext } from "../context/context";
 import {FaBars} from 'react-icons/fa'
 import logo  from '../images/logo.svg'
 const Navbar = ()=>{
-const {openSidebar} = useContext(AppContext);
-
+const {openSidebar,openSubmenu} = useContext(AppContext);
+const displaySideMenu = (e)=>{
+  console.log('Hello World')
+openSubmenu()
+}
     return (
         <nav className='nav'>
           <div className='nav-center'>
@@ -16,17 +19,17 @@ const {openSidebar} = useContext(AppContext);
             </div>
             <ul className='nav-links'>
               <li>
-                <button className='link-btn'>
+                <button className='link-btn' onMouseOver={displaySideMenu}>
                   products
                 </button>
               </li>
               <li>
-                <button className='link-btn'>
+                <button className='link-btn' onMouseOver={displaySideMenu}>
                   developers
                 </button>
               </li>
               <li>
-                <button className='link-btn'>
+                <button className='link-btn' onMouseOver={displaySideMenu}>
                   company
                 </button>
               </li>
