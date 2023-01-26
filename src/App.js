@@ -4,9 +4,14 @@ import "./App.css";
 
   
 const reducer = (state,action)=>{
-  console.log(state.count+1,action);
-  if(action.type === 'increment'){
-    const obj ={...state,count:state.count+1}
+
+  if(action.type === 'submit'){
+  
+ 
+//   console.log(action.payload,'////////')
+const item = {name:action.payload}
+    const obj ={...state,name:action.payload,list:[...state.list,item]};
+    console.log(obj,"???????????")
     return obj;
   }
   
@@ -14,17 +19,22 @@ const reducer = (state,action)=>{
 function App() {
    
     const initialState = {
-        count:0
+        name:'',
+        list:[]
     }
-
+const [name,setName] = useState('');
 const [state,dispatch]=useReducer(reducer,initialState);
-const handle = ()=>{
-    dispatch({type:'increment'})
+const handleSubmit = (e)=>{
+e.preventDefault();
+console.log(name,">>>>>>>>>>>>>>")
+    dispatch({type:'submit',payload:name})
 }
 return (
 <>
-{state.count}
-<button onClick={handle}>increment</button>
+<form onSubmit={handleSubmit}>
+<input type="text" name="name" value={name} onChange={(e)=>{setName(e.target.value)}}/>
+<button type="submit">submit</button>
+</form>
 </>
 )
 }
