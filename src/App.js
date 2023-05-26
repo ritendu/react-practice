@@ -1,13 +1,11 @@
 
 import './App.css';
-import ComponentA from './components/ComponentA';
-// import ComponentA from './components/ComponentA';
-
+import ToggleExample from './components/ToggleExample'
 function App() {
 
   return (
  <>
-<ComponentA></ComponentA>
+<ToggleExample/>
 
  </>
   
