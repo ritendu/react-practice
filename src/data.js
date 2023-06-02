@@ -1,0 +1,20 @@
+export const cartItems= [
+{
+    id:1,
+    title:'hhh',
+    price:40,
+    amount:1
+},
+{
+    id:2,
+    title:'kkk',
+    price:50,
+    amount:1
+},
+{
+    id:3,
+    title:'lll',
+    price:60,
+    amount:1
+}
+]
