@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux"
 import CartItem from './CartItem'
-import cartItems from "../cartItems"
+
 
 const CartContainer = ()=>{
-  // const {cartItems} = useSelector((state)=>{state.cart})
+ const {cartItems} = useSelector((store)=>store.cart)
     return (
         <section className='cart'>
         <header>
