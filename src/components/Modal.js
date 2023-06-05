@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux"
+import {cleanCart,openModal} from "../features/cart/cartItems.slice"
 const Modal = ()=>{
+const dispatch = useDispatch();
 return (
     <aside className='modal-container'>
     <div className='modal'>
@@ -6,7 +9,10 @@ return (
       <div className='btn-container'>
         <button
           type='button'
-          className='btn confirm-btn'
+          className='btn confirm-btn' onClick={()=>{
+            dispatch(cleanCart())
+            dispatch(openModal())
+          }}
         >
           confirm
         </button>

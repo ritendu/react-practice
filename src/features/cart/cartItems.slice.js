@@ -5,9 +5,11 @@ const initialState = {
     cartItems:cartItems,
     amount:0,
     total:0,
-    isLoading:true
+    isLoading:true,
+    isOpen:false
 
 }
+
 export const items = createSlice({
 name:'cart',
 initialState,
@@ -28,7 +30,6 @@ cartItem.amount = cartItem.amount -1
 
     },
     calculateTotals:(state)=>{
-        console.log('Hello')
         let amount = 0;
         let total = 0;
         state.cartItems.forEach((item) => {
@@ -37,9 +38,12 @@ cartItem.amount = cartItem.amount -1
         });
         state.amount = amount;
         state.total = total;
-    }
+    },
+    openModal:(state)=>{
+        state.isOpen = !state.isOpen
+    },
 }
 })
 
-export const {cleanCart,increase,decrease,remove,calculateTotals} = items.actions
+export const {cleanCart,increase,decrease,remove,calculateTotals,openModal} = items.actions
 export default items.reducer
