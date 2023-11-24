@@ -4,6 +4,7 @@ import './App.css';
 import { Routes,Route } from 'react-router-dom';
 import axios from "axios"
 import { Container } from '@mui/material';
+import Header from './components/Header/Header';
 function App() {
 const [meanings,setMeanings] = useState([]);
 
@@ -20,9 +21,9 @@ useEffect(()=>{
 fetchApi()
 },[])
   return (
-<div className='App' style={{height:'100vh', backgroundColor:"#282c34"}}>
- <Container maxWidth="md">
-Dictionary
+<div className='App' style={{height:'100vh', backgroundColor:"#282c34", color:"white"}}>
+ <Container maxWidth="md" style={{display:"flex",flexDirection:"column", height:"100vh"}}>
+<Header/>
  </Container>
 </div>
 
