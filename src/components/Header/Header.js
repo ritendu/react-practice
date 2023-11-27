@@ -52,9 +52,9 @@ const Header = ()=>{
           className='select'
           onChange={handleChange}
         >
-            {categories.map((item)=>{
+            {categories.map((item,index)=>{
                 return (
-                    <MenuItem value={item.value}>{item.value}</MenuItem>
+                    <MenuItem key={index} value={item.value}>{item.value}</MenuItem>
                 )
             })}
           {/* <MenuItem value={10}>Ten</MenuItem>
