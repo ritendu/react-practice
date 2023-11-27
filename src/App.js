@@ -1,31 +1,30 @@
 
-import { useEffect, useState } from 'react';
 import './App.css';
-import { Routes,Route } from 'react-router-dom';
-import axios from "axios"
-import { Container } from '@mui/material';
-import Header from './components/Header/Header';
+import { useState,useMemo } from 'react';
 function App() {
-const [meanings,setMeanings] = useState([]);
+const [state,setState] = useState(0);
+const [show,setShow] = useState(false)
 
-  const fetchApi = async()=>{
-    try {
-      const data = await axios.get("https://api.dictionaryapi.dev/api/v2/entries/en/hello")
-    setMeanings(data.data);
-    } catch (error) {
-      
-    }
-    
-  }
-useEffect(()=>{
-fetchApi()
-},[])
+const handleChange = ()=>{
+setState(state+1)
+}
+const loop = (state)=>{
+for(let i=0;i<=100000000;i++){
+
+}
+
+return state;
+}
+const checkData = useMemo(()=>{
+  return loop(state)
+ },[state])
   return (
-<div className='App' style={{height:'100vh', backgroundColor:"#282c34", color:"white"}}>
- <Container maxWidth="md" style={{display:"flex",flexDirection:"column", height:"100vh"}}>
-<Header/>
- </Container>
-</div>
+<>
+<button onClick={handleChange}>Counter</button>
+{checkData}
+<button onClick={()=>setShow(!show)}>{show?'Click Me':'Send Me'}</button>
+</>
+
 
 
   );
