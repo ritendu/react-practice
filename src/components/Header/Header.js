@@ -6,14 +6,16 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import { useState } from "react";
+import { debounce } from "lodash";
 const Header = ({category,setCategory,setWord,word}) => {
  
-  const handleWord = (event) => {
-    console.log();
+  const handleText = (event) => {
     setWord(event.target.value);
+   
   };
   const handleChange = (event) => {
     setCategory(event.target.value);
+   
   };
   const categories = [
     { value: "English", label: "en" },
@@ -48,7 +50,7 @@ const Header = ({category,setCategory,setWord,word}) => {
             label="Standard"
             variant="standard"
             value={word}
-            onChange={handleWord}
+            onChange={handleText}
           />
           <FormControl>
             <InputLabel id="demo-simple-select-label" style={{ width: "50px" }}>
