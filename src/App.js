@@ -2,17 +2,18 @@
 import './App.css';
 import { useState,useMemo } from 'react';
 import { Routes,Route } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import RouteIdentifier from './routing/RouteIdentifier';
 function App() {
 
   return (
 <>
-<Routes>
-  <Route path='/' element={<Home/>}/>
-  <Route path='/about' element={<About/>}/>
-  </Routes>
-
+{/* <Routes>
+  <Route path="/login" element={<Login/>} />
+  <Route path="/dashboard" element={<Dashboard/>}/>
+</Routes> */}
+<RouteIdentifier/>
 </>
 
 
