@@ -22,7 +22,6 @@ export const route = [
     {
         path:'/login',
         component:AuthLayoutFunc(<Login/>),
-        // component:<Login/>,
         protected:false,
         role:''
     },
