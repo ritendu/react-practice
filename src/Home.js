@@ -1,9 +1,0 @@
-import withLayout from "./hocs/withLayout"
-
-const Home = ()=>{
-    return (
-        <h1>Home Page</h1>
-    )
-}
-
-export default withLayout(Home)

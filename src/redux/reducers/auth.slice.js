@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "../../constants/config";
 import axios from "axios"
-
+import http from "../../components/api/http";
 const initialState = {
     isLoading:false,
     user:null,
@@ -12,7 +12,7 @@ export const loginAdmin= createAsyncThunk(
     async (user, { rejectWithValue }) => {
   
       try {
-        const response = await axios.post(`${API_URL}/admin/login`, user);
+        const response = await http.post("/vendor/vendor_login", user);
         return response.data;
       } catch (error) {
         return rejectWithValue(error.response.data);

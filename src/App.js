@@ -9,10 +9,6 @@ function App() {
 
   return (
 <>
-{/* <Routes>
-  <Route path="/login" element={<Login/>} />
-  <Route path="/dashboard" element={<Dashboard/>}/>
-</Routes> */}
 <RouteIdentifier/>
 </>
 

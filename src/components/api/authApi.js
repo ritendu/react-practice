@@ -1,11 +1,20 @@
 import catchAsync from "../utils/catchAsync"
 import { API_URL } from "../../constants/config"
-import axios from 'axios'
-export const userLogin  = catchAsync(async(values)=>{
-const data = await axios.post(`${API_URL}/admin/login`,values);
-if(data && data.status === 200){
-localStorage.setItem()
-}
-return data
+import http from "./http";
+export const userLogin = catchAsync(async (values) => {
+    const data = await http.post("/auth/login", values);
+    if (data && data.status === 200) {
+        console.log(data,"data")
+    }
+    return data;
+});
 
+
+export const refreshLoggedInUser = catchAsync(async(refreshToken)=>{
+    try {
+     const tokens = await http.post('/auth/refresh-tokens',refreshToken);
+     return tokens
+    } catch (error) {
+        return false
+    }
 })
