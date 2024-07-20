@@ -1,43 +1,28 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-// import { cartItems } from "./data";
-import Modal from "./Modal";
-import { clearitem,removeItem,increase,decrease,calculateTotals } from "./cartItemsSlice";
-import {openModal,closeModal}  from "./modalSlice"
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 function App() {
-  const { amount, total,cartItems } = useSelector((state) => state.cart);
-  const {isOpen} = useSelector((state)=>state.modal)
-  const dispatch = useDispatch();
-
- useEffect(()=>{
-dispatch(calculateTotals())
-
- },[cartItems])
+const {isPending,data} = useQuery({
+  queryKey:["products"],
+  queryFn:async()=>{
+    const {data} = await axios.get('https://dummyjson.com/products');
+    console.log(data,"data")
+    return data
+  }
+})
 
   return (
-    <div className="middle">
-{isOpen && <Modal></Modal>}
-      {amount < 1 ? (
-        <div>
-          <h1>Cart is currently empty</h1>
-        </div>
-      ) : (
-        <div>
-          {cartItems.map((item) => {
-            return <div key={item.id}>{item.title}
-            {item.amount}
-            <button onClick={()=>dispatch(increase(item.id))}>increase amount</button>
-            <button onClick={()=>dispatch(decrease(item.id))}>decrease amount</button>
-            <button onClick={()=>dispatch(removeItem(item.id))}>remove Item</button></div>;
-          })}
-        </div>
-      )}
+<div>
+{!isPending && data?.products.length!==0 ? data?.products.map((item)=>{
+return (
+  <div key={item.id}>
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+  </div>
 
-      <button onClick={()=>dispatch(openModal())}>Clear item</button>
-      <p>Amount: {amount}</p>
-      <p>Total: {total}</p>
-    </div>
+)
+}):null}
+</div>
   );
 }
 
