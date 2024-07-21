@@ -5,7 +5,7 @@ function App() {
 const {isPending,data} = useQuery({
   queryKey:["products"],
   queryFn:async()=>{
-    const {data} = await axios.get('https://dummyjson.com/products');
+    const {data} = await axios.get('http://localhost:4000/v1/get/tasks');
     console.log(data,"data")
     return data
   }
@@ -13,11 +13,10 @@ const {isPending,data} = useQuery({
 
   return (
 <div>
-{!isPending && data?.products.length!==0 ? data?.products.map((item)=>{
+{!isPending && data?.data.length!==0 ? data?.data.map((item,index)=>{
 return (
-  <div key={item.id}>
+  <div key={index}>
       <h3>{item.title}</h3>
-      <p>{item.description}</p>
   </div>
 
 )
