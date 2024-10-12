@@ -1,6 +1,7 @@
 import "./App.css";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Form from "./Form";
 function App() {
 const {isPending,data} = useQuery({
   queryKey:["products"],
@@ -13,11 +14,15 @@ const {isPending,data} = useQuery({
 
   return (
 <div>
+<Form/>
 {!isPending && data?.data.length!==0 ? data?.data.map((item,index)=>{
 return (
+  <>
   <div key={index}>
       <h3>{item.title}</h3>
   </div>
+  </>
+  
 
 )
 }):null}
