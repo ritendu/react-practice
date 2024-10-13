@@ -1,31 +1,28 @@
+import { useState } from "react";
 import "./App.css";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Form from "./Form";
+import AutoComplete from "./components/AutoComplete/AutoComplete";
 function App() {
-const {isPending,data} = useQuery({
-  queryKey:["products"],
-  queryFn:async()=>{
-    const {data} = await axios.get('http://localhost:4000/v1/get/tasks');
-    console.log(data,"data")
-    return data
-  }
-})
+  const fetchSuggestions = async (query) => {
+    const response = await fetch(
+      `https://dummyjson.com/recipes/search?q=${query}`
+    );
+  
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const result = await response.json();
+    console.log(result.recipes,"data??////")
+
+    return result.recipes;
+  };
 
   return (
 <div>
-<Form/>
-{!isPending && data?.data.length!==0 ? data?.data.map((item,index)=>{
-return (
-  <>
-  <div key={index}>
-      <h3>{item.title}</h3>
-  </div>
-  </>
-  
-
-)
-}):null}
+<AutoComplete
+fetchSuggessions={fetchSuggestions}
+dataKey={"name"}
+customLoading={"Loading..."}
+/>
 </div>
   );
 }
