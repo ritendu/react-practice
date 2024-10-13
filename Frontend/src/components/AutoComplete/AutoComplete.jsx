@@ -10,9 +10,11 @@ const AutoComplete = ({fetchSuggessions,customLoading,dataKey})=>{
     const handleInputChange = (event)=>{
      setInputValue(event.target.value)   
     }
-    const handleSuggestionClick=()=>{
-
-    }
+    const handleSuggestionClick = (suggestion) => {
+        setInputValue(dataKey ? suggestion[dataKey] : dataKey);
+        // onSelect(suggestion);
+        setSuggestions([]);
+      };
     const getSuggessions = async(data)=>{
         setLoading(true)
         setError(null)
@@ -46,7 +48,7 @@ const AutoComplete = ({fetchSuggessions,customLoading,dataKey})=>{
         <div className="container">
         <input 
           type="text"
-        //   value={inputValue}
+          value={inputValue}
         //   placeholder={placeholder}
         //   style={customStyles}
         //   onBlur={onBlur}
@@ -62,7 +64,7 @@ const AutoComplete = ({fetchSuggessions,customLoading,dataKey})=>{
             //   dataKey={dataKey}
             //   highlight={inputValue}
               suggestions={suggestions}
-            //   onSuggestionClick={handleSuggestionClick}
+              onSuggestionClick={handleSuggestionClick}
             />
           </ul>
         )}

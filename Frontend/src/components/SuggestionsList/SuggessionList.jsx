@@ -1,4 +1,4 @@
-const SuggestionsList =({suggestions})=>{
+const SuggestionsList =({suggestions,onSuggestionClick})=>{
     return (
       <>
             {suggestions.map((suggestion, index) => {
@@ -7,7 +7,7 @@ const SuggestionsList =({suggestions})=>{
         return (
           <li
             key={index}
-            // onClick={() => onSuggestionClick(suggestion)}
+            onClick={() => onSuggestionClick(suggestion)}
             className="suggestion-item"
             id={`suggestion-${index}`}
           >
