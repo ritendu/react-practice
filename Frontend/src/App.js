@@ -11,8 +11,6 @@ function App() {
       throw new Error("Network response was not ok");
     }
     const result = await response.json();
-    console.log(result.recipes,"data??////")
-
     return result.recipes;
   };
 
