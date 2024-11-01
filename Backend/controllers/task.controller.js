@@ -1,10 +1,11 @@
 const TaskModal = require("../models/task.model")
 
 const getTasks = async(req,res)=>{
-console.log("Inside get tasks")    
+console.log("Inside get tasks",req.query?.search)    
 const limit = req.query.limit ? Number(req.query.limit) : 10;
 const page = req.query.page ? Number(req.query.page) : 1;
-const query = req.query?.search ? {title:req.query?.search}:{}    
+
+const query = req.query?.search ? { title: { $regex: req.query.search, $options: 'i' } } : {};
 const getTasks = await TaskModal.find(query).skip(limit * (page - 1)).limit(limit).sort({ createdAt: -1 });
 console.log(getTasks,"getTasks")
 res.status(200).json({data:getTasks})

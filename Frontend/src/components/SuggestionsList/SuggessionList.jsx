@@ -1,5 +1,6 @@
 const SuggestionsList =({suggestions,onSuggestionClick})=>{
-    return (
+  console.log(suggestions,"suggestions")  
+  return (
       <>
             {suggestions.map((suggestion, index) => {
         // const currSuggestion = dataKey ? suggestion[dataKey] : suggestion;
@@ -11,7 +12,7 @@ const SuggestionsList =({suggestions,onSuggestionClick})=>{
             className="suggestion-item"
             id={`suggestion-${index}`}
           >
-           {suggestion?.name} 
+           {suggestion?.title} 
           </li>
         );
       })}

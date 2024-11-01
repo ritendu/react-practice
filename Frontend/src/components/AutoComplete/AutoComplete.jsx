@@ -19,6 +19,7 @@ const AutoComplete = ({fetchSuggessions,customLoading,dataKey})=>{
       };
 
       const getSuggessions = async(data)=>{
+        console.log(data,"data")
         setLoading(true)
         setError(null)
         if(fetchSuggessions){
